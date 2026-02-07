@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Nikita Kumari</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .lang-switcher {
+            display: flex;
+            background: var(--primary-light);
+            border-radius: var(--radius-sm);
+            padding: 2px;
+        }
+
+        .lang-btn {
+            padding: 0.3rem 0.8rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .lang-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .contact-hero {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            color: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .contact-info-card {
+            background: var(--bg-alt);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .contact-form-card {
+            background: var(--white);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #cbd5e0;
+            border-radius: var(--radius-md);
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            height: 120px;
+        }
+
+        footer {
+            background: var(--bg-alt);
+            padding: var(--spacing-lg) 0;
+            border-top: 1px solid #e2e8f0;
+            margin-top: var(--spacing-xl);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Nikita Kumari</a>
+                <div class="nav-links">
+                    <a href="index.html" data-i18n="nav_home">Home</a>
+                    <a href="about.html" data-i18n="nav_about">About Me</a>
+                    <a href="complaint.html" data-i18n="nav_complaint">Submit Complaint</a>
+                    <a href="contact.html" data-i18n="nav_contact">Contact</a>
+                    <div class="lang-switcher">
+                        <div class="lang-btn" data-lang="en">EN</div>
+                        <div class="lang-btn" data-lang="hi">हिंदी</div>
+                    </div>
+                </div>
+                <div class="menu-toggle">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-hero">
+            <div class="container">
+                <h1 data-i18n="nav_contact">Contact</h1>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="contact-grid">
+                <div class="contact-info-card">
+                    <h2 data-i18n="contact_title">Get In Touch</h2>
+                    <p>For any urgent queries or feedback, please reach out to our official office.</p>
+                    <div class="mt-md">
+                        <strong data-i18n="contact_email">Official Email</strong>
+                        <p>nikitakumariward16@gmail.com</p>
+                    </div>
+                    <div class="mt-md">
+                        <strong>Office Hours</strong>
+                        <p>Monday - Friday: 10:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+
+                <div class="contact-form-card">
+                    <h2 data-i18n="contact_form_title">Send a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" data-i18n="form_name">Name</label>
+                            <input type="text" id="name" required data-i18n="form_name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-i18n="form_email">Email Address</label>
+                            <input type="email" id="email" required data-i18n="form_email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-i18n="form_desc">Message</label>
+                            <textarea id="message" required data-i18n="form_desc"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" style="width: 100%;">Send Message</button>
+                    </form>
+                    <div id="contactSuccess" style="display:none; text-align:center;" class="mt-md">
+                        <p style="color: var(--success); font-weight: 600;">Message sent successfully!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container text-center">
+            <p data-i18n="footer_text">© 2026 Nikita Kumari. Dedicated to Service.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/translations.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            this.style.display = 'none';
+            document.getElementById('contactSuccess').style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>

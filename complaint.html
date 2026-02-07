@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Complaint | Nikita Kumari</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .lang-switcher {
+            display: flex;
+            background: var(--primary-light);
+            border-radius: var(--radius-sm);
+            padding: 2px;
+        }
+
+        .lang-btn {
+            padding: 0.3rem 0.8rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .lang-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .complaint-hero {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+        }
+
+        .complaint-hero h1 {
+            color: var(--white);
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: var(--spacing-lg) auto;
+            background: var(--white);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #cbd5e0;
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .commitment-badge {
+            background: var(--primary-light);
+            color: var(--primary-color);
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: var(--spacing-lg);
+        }
+
+        .success-message h2 {
+            color: var(--success);
+        }
+
+        footer {
+            background: var(--bg-alt);
+            padding: var(--spacing-lg) 0;
+            border-top: 1px solid #e2e8f0;
+            margin-top: var(--spacing-xl);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Nikita Kumari</a>
+                <div class="nav-links">
+                    <a href="index.html" data-i18n="nav_home">Home</a>
+                    <a href="about.html" data-i18n="nav_about">About Me</a>
+                    <a href="complaint.html" data-i18n="nav_complaint">Submit Complaint</a>
+                    <a href="contact.html" data-i18n="nav_contact">Contact</a>
+                    <div class="lang-switcher">
+                        <div class="lang-btn" data-lang="en">EN</div>
+                        <div class="lang-btn" data-lang="hi">हिंदी</div>
+                    </div>
+                </div>
+                <div class="menu-toggle">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="complaint-hero">
+            <div class="container">
+                <h1 data-i18n="complaint_title">Submit a Complaint</h1>
+                <p data-i18n="complaint_subtitle">Your concerns are our priority. We promise a response within 24-48
+                    hours.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div id="complaint-form-wrapper" class="form-container">
+                <div class="commitment-badge" data-i18n="response_commitment">
+                    All complaints will receive a response within 24–48 hours.
+                </div>
+
+                <form id="complaintForm">
+                    <div class="form-group">
+                        <label for="name" data-i18n="form_name">Name</label>
+                        <input type="text" id="name" required data-i18n="form_name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobile" data-i18n="form_mobile">Mobile Number</label>
+                        <input type="tel" id="mobile" required pattern="[0-9]{10}" data-i18n="form_mobile">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" data-i18n="form_email">Email Address</label>
+                        <input type="email" id="email" required data-i18n="form_email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ward" data-i18n="form_ward">Ward Area or Street Name</label>
+                        <input type="text" id="ward" required data-i18n="form_ward">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category" data-i18n="form_category">Problem Category</label>
+                        <select id="category" required>
+                            <option value="" disabled selected data-i18n="form_category">Select Category</option>
+                            <option value="road" data-i18n="cat_road">Road</option>
+                            <option value="water" data-i18n="cat_water">Water</option>
+                            <option value="drainage" data-i18n="cat_drainage">Drainage</option>
+                            <option value="garbage" data-i18n="cat_garbage">Garbage</option>
+                            <option value="light" data-i18n="cat_light">Street Light</option>
+                            <option value="park" data-i18n="cat_park">Kids Park</option>
+                            <option value="safety" data-i18n="cat_safety">Safety</option>
+                            <option value="other" data-i18n="cat_other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" data-i18n="form_desc">Complaint Description</label>
+                        <textarea id="description" required data-i18n="form_desc"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="photo" data-i18n="form_photo">Upload Photo (Optional)</label>
+                        <input type="file" id="photo" accept="image/*">
+                    </div>
+
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;"
+                        data-i18n="privacy_notice">
+                        Your data will only be used for complaint resolution purposes.
+                    </p>
+
+                    <button type="submit" class="btn btn-primary w-100" style="width: 100%;"
+                        data-i18n="form_submit">Register Complaint</button>
+                </form>
+            </div>
+
+            <div id="successMessage" class="success-message">
+                <span style="font-size: 4rem;">✅</span>
+                <h2 data-i18n="form_submit">Complaint Registered Successfully</h2>
+                <p data-i18n="response_commitment">All complaints will receive a response within 24–48 hours.</p>
+                <a href="index.html" class="btn btn-primary mt-md" data-i18n="nav_home">Back to Home</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container text-center">
+            <p data-i18n="footer_text">© 2026 Nikita Kumari. Dedicated to Service.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/translations.js"></script>
+    <script>
+        document.getElementById('complaintForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            // Simulate form submission
+            document.getElementById('complaint-form-wrapper').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            window.scrollTo(0, 0);
+        });
+    </script>
+</body>
+
+</html>
